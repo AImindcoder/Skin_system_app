@@ -176,15 +176,18 @@ Upload a clear image of the affected skin area DermaSense AI will analyze and pr
 # -----------------------
 # Load TensorFlow Lite Model
 # -----------------------
+import os
+
 try:
-    tflite_model_path = r"C:\Users\Sahil khan(Machine E\Documents\New folder (4)\model.tflite"
+    # Relative path to model.tflite in the same folder as AI.py
+    tflite_model_path = os.path.join(os.path.dirname(__file__), "model.tflite")
     interpreter = tf.lite.Interpreter(model_path=tflite_model_path)
     interpreter.allocate_tensors()
 
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
-    st.success("Loaded TensorFlow Lite model: model.tflite")
+    st.success("✅ Loaded TensorFlow Lite model: model.tflite")
 except Exception as e:
     st.error(f"❌ Error loading model: {e}")
     interpreter = None
@@ -386,3 +389,4 @@ I am currently studying **Artificial Intelligence** and have a strong foundation
 It is my dream to apply AI to **real-world problems** and create something truly **remarkable for humanity** through the power of intelligent technology. 
 """)
 st.markdown("**Developed by Sahil Khan** | Powered by TensorFlow, OpenCV and Streamlit")
+
